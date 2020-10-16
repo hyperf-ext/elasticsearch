@@ -1,6 +1,6 @@
 # Hyperf Elasticsearch 组件
 
-实现通过协程和连接池来与 Elasticsearch 交互，同时对模型提供有限的支持。
+该组件为 [Elasticsearch](https://github.com/elastic/elasticsearch-php) 客户端的创建提供了工厂类封装。同时，得益于 [hyperf/guzzle](https://github.com/hyperf/guzzle) 协程组件，该组件为 Elasticsearch 的 `Handler` 实现了协程化，可配置为连接池模式。
 
 ## 安装
 
@@ -8,7 +8,7 @@
 composer require hyperf-ext/elasticsearch
 ```
 
-> 如启用 ES 日志则需安装 [`hyperf/logger`](https://hyperf.wiki/2.0/#/zh-cn/logger) 组件。
+> 如启用 Elasticsearch 客户端日志则需安装 [`hyperf/logger`](https://hyperf.wiki/2.0/#/zh-cn/logger) 组件。
 
 ## 发布配置
 
@@ -52,7 +52,7 @@ php bin/hyperf.php vendor:publish hyperf-ext/elasticsearch
 
     /*
     |--------------------------------------------------------------------------
-    | 日志设置
+    | Elasticsearch 日志设置
     |--------------------------------------------------------------------------
     |
     | 启用日志需安装 `hyperf/logger` 组件。
@@ -70,4 +70,13 @@ php bin/hyperf.php vendor:publish hyperf-ext/elasticsearch
 
 只需简单的注入 `Elasticsearch\Client` 类即可获取客户端实例对象，所有相关配置都已在 `HyperfExt\Elasticsearch\ClientFactory` 工厂类中完成。
 
-默认配置下，组件会将 ES 的 `Handler` 设置为连接池版本。如果不需要使用连接池，请将 `pool.enabled` 配置项设置为 `false`，组件将会使用协程版本的 `Handler`。
+```php
+<?php
+
+use Elasticsearch\Client;
+use Hyperf\Utils\ApplicationContext;
+
+$client = ApplicationContext::getContainer()->get(Client::class);
+
+$info = $client->info();
+```
