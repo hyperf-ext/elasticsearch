@@ -23,7 +23,7 @@ class ConfigProvider
             'publish' => [
                 [
                     'id' => 'config',
-                    'description' => 'The config for HyperfExt\\Elasticsearch.',
+                    'description' => 'The config for hyperf-ext/elasticsearch.',
                     'source' => __DIR__ . '/../publish/elasticsearch.php',
                     'destination' => BASE_PATH . '/config/autoload/elasticsearch.php',
                 ],
