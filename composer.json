@@ -28,16 +28,16 @@
     "require": {
         "php": ">=7.3",
         "ext-swoole": ">=4.5",
-        "elasticsearch/elasticsearch": "^7.9",
-        "hyperf/config": "~2.1.0",
-        "hyperf/di": "~2.1.0",
-        "hyperf/framework": "~2.1.0",
-        "hyperf/guzzle": "~2.1.0",
-        "hyperf/pool": "~2.1.0"
+        "elasticsearch/elasticsearch": "^7.13",
+        "hyperf/config": "~2.2.0",
+        "hyperf/di": "~2.2.0",
+        "hyperf/framework": "~2.2.0",
+        "hyperf/guzzle": "~2.2.0",
+        "hyperf/pool": "~2.2.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.14",
-        "hyperf/testing": "~2.1.0",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "hyperf/testing": "~2.2.0",
         "phpstan/phpstan": "^0.12",
         "swoole/ide-helper": "dev-master",
         "mockery/mockery": "^1.0"
@@ -49,7 +49,7 @@
         "sort-packages": true
     },
     "scripts": {
-        "test": "co-phpunit -c phpunit.xml --colors=always",
+        "test": "co-phpunit --prepend tests/bootstrap.php -c phpunit.xml --colors=always",
         "analyse": "phpstan analyse --memory-limit 1024M -l 0 ./src",
         "cs-fix": "php-cs-fixer fix $1"
     },
